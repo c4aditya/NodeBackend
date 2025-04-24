@@ -2,7 +2,7 @@
 
  # 1- client and server interection or model 
 
-it's simply means that the cline send a request to the server and then server responce to the particular request as give some responce 
+it's simply means that the client send a request to the server and then server responce to the particular request as give some responce 
 
 # HTTPS :-
 HTTPS stands for Hypertext Transfer Protocol Secure. It is the secure version of HTTP, using encryption to protect the data transmitted between a web browser and a website. This encryption ensures that sensitive information like login details or credit card numbers are not intercepted or altered by unauthorized parties, according to Fortinet. 
