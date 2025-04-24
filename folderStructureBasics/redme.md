@@ -36,7 +36,7 @@ Express is a framework of nodejs which help us to create the server side applica
 
 # middleware
 
-Basically middle ware is work in the middle of request and responce if there are any issue in the request body then it through an error but if there is no issue in request body then it move to the logics or controller of the paricular route. middle ware will also check the validation,varification ,auth.
+Basically middle ware is work in the middle of request and responce if there are any issue in the request body [where is the data come form like login page ,signup page] then it through an error but if there is no issue in request body then it move to the logics or controller of the paricular route. middle ware will also check the validation,varification ,auth.
 
 there are many types of middleware and all have diffrent work 
 note body-parser is dipricated in the palce of this we use 
