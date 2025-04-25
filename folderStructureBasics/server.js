@@ -18,6 +18,26 @@ app.get('/', (req,res)=>{
 app.post("/home", (req,res)=>{
     const {name , brand} = req.body;
     console.log(name , brand)
-
+// ye jo bhi responce hoga vo muje post call krne ke baad agr shi data hai to muje mere UI peshow hoga thik washai ki jashai ki postman pe show hota hai 
     res.send("This is home page ")
+})
+
+// making connection with the database 
+
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost:27017/pratice",{
+
+    
+})
+
+.then(()=>{
+    console.log("DB Connection Sucessfully")
+})
+
+.catch((error) =>{
+    console.log("DB connection problem")
+    console.log(error)
+    
+
 })

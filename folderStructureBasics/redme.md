@@ -40,5 +40,6 @@ Basically middle ware is work in the middle of request and responce if there are
 
 there are many types of middleware and all have diffrent work
 
-for ex - body-parser middle ware 
-      it conver the json data to js object
+# Database 
+
+For Database we use MongoDB for connect with the data base we use mongoose 
