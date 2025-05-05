@@ -10,6 +10,8 @@ require("dotenv").config();
             cloud_key:process.env.API_KEY,
         });
 
+        console.log("Connect with cloudinary sucess")
+
         }
 
      catch(error){
