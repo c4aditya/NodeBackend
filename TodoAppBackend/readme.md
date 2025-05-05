@@ -12,9 +12,26 @@ in this code file the routes are
 
 # Controller 
 
-In controller All the logics are define when particualr Route hit then what should perform like in this code we have only to do is make entry in the database after route hits [ It is connect with the Routes ]. and also it is use the Model schema 
+In controller All the logics are define when particualr Route hit then what should perform like in this code we have only to do is make entry in the database after route hits [ It is connect with the Routes ]. and also it is use the Model schema all path have diffrent controller. 
 
 # Model 
 
-This file contain the schma of the API route like if we have to create the Create TODO then  we have to provide the titile , descripction  , like data when we fill  these data into a i.e postman and then make a POST request then it works. 
+This file contain the schema of the API route like if we have to create the Create TODO then  we have to provide the titile , descripction  , like data when we fill  these data into a i.e postman and then make a POST request then it works. 
+
+this sehma can be created by the mongoose 
+
+# config
+
+It contain the database Mongoose for DB connection
+
+# .env 
+
+All the data like Port , Database ka ulr
+
+# API's Routes 
+
+1- CreateTodo
+2- GetTodo
+3-UpdateTodo
+4- Delete Todo 
 
