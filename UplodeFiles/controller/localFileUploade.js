@@ -1,6 +1,4 @@
-// const file = require("../models/file")
-
-
+const fileUploade = require("../models/file")
 // local file uploade handler function 
 // the work of local handler function is fetch the file form client local system  and uploade directly to the server.
 
