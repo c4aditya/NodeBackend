@@ -14,11 +14,13 @@ app.use(express.json());
 
 // adding middleware for file uploade 
 // it's a third party packege 
-app.use(file_uploade());
+app.use(file_uploade({ useTempFiles: true }));
 
 // mount routes 
 const local_file_uploade = require("./route/fileUploade")
 app.use("/api/v1",local_file_uploade)
+
+
 
 // database connection 
 const db_connection = require("./config/dbConnect")
