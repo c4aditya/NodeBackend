@@ -27,7 +27,7 @@ async function signup(req, res) {
         }
 
         //  hasing password 
-        
+
         // isse hum try catch me use krenge kyoki ye yek hashkrne me time lg saquta hai 
         try {
             // isme basically use kr rhe hai ki kisko hash [password]krna hai aur kitne round hash krna hai [10]
@@ -50,7 +50,7 @@ async function signup(req, res) {
             role,
         })
 
-        console.log(user)
+
 
         return res.status(200).json({
             sucess: true,
@@ -92,50 +92,54 @@ async function login(req, res) {
                 mssage: "Fill all the Details"
             })
         }
-       console.log("checking email is same or not from data base")
-        const isSignup = await model.findOne({ email })
+        console.log("checking email is same or not from data base")
+        const user = await model.findOne({ email })
 
-        if (!isSignup) {
+        if (!user) {
             return res.status(404).json({
                 sucess: false,
                 message: "User Not found make sure you are login first"
             })
         }
 
-        // compaire the password as enter password ]
-
-      
+        // compaire the password as enter password ]     
 
         try {
-       
+
             console.log("compare the password ")
-            const isPasswordCorrect = await bcrypt.compare(password, isSignup.password);
+            const isPasswordCorrect = await bcrypt.compare(password, user.password);
             console.log("Password is match")
             // create the jwt token 
             // for JWT we nedd payloade 
 
             const payloade = {
-                id:isSignup._id,
-                email:isSignup.email,
-                role:isSignup.role
+                id: user._id,
+                email: user.email,
+                role: user.role,
+               
+
             }
 
             console.log("Creating ")
             const JWT_sectate = "Aditya"
-            if(isPasswordCorrect){
+            if (isPasswordCorrect) {
 
                 // create a token jisse ki server ko yaad rhe aur baar baar password na mange 
 
-                const token = JWT.sign(payloade ,JWT_sectate,
-                             {
-                                //options 
-                                expiresIn:"2h",
-                             }
+                let token = JWT.sign(payloade, JWT_sectate,
+                    {
+                        //options 
+                        expiresIn: "2h",
+                    }
                 )
 
-                console.log(token)
 
-                // isSignup.token = token
+
+                // console.log(token)
+
+                user.token = token
+                user.password = null;
+
 
 
                 // create a coockie
@@ -143,34 +147,42 @@ async function login(req, res) {
                 // 1- cookie name 
                 // 2- cookie data 
                 // 3 - Some options 
-   
-                 const options ={
+
+                const options = {
 
                     // expire time 
-                    expiresIn:Date.now() + 9 * 24 * 60 * 60 *1000,
+                    expiresIn: Date.now() + 9 * 24 * 60 * 60 * 1000,
 
                     // client side se access ko rokne ke liye 
 
-                    httpOnly:true
+                    httpOnly: true
 
-                 }
-                res.cookie("token" , token , options).status(200).json({
-                    sucess:true,
-                    
-                    message:"The cookei is created and User logied in sucessfully  "
+                }
+                //  console.log(isSignup)
+                res.cookie("token", token, options).status(200).json({
+                    sucess: true,
+
+                    user: {
+                        id: user._id,
+                        name: user.name,
+                        email: user.email,
+                        role: user.role,
+                        token: token
+                    },
+                    message: "The cookei is created and User logied in sucessfully  "
                 })
 
 
 
             }
-            else{
+            else {
                 return res.status(500).json({
                     sucess: false,
                     message: "The Password is incorect"
                 })
             }
-        
-            console.log(isSignup)
+
+
 
             // res.status(200).json({
             //     sucess: true,
@@ -188,8 +200,8 @@ async function login(req, res) {
 
         // make a databse enty 
 
-       
-   
+
+
     }
 
 
